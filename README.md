@@ -18,8 +18,10 @@ Pingtunnel is a tool that send TCP/UDP traffic over ICMP.
 
 ### Install server
 
--   First prepare a server with a public IP, such as EC2 on AWS, assuming the domain name or public IP is www.yourserver.com
--   Download the corresponding installation package from [releases](https://github.com/esrrhs/pingtunnel/releases), such as pingtunnel_linux64.zip, then decompress and execute with **root** privileges
+- First prepare a server with a public IP, such as EC2 on AWS, assuming the domain name or public IP
+  is www.yourserver.com
+- Download the corresponding installation package from [releases](https://github.com/esrrhs/pingtunnel/releases), such
+  as pingtunnel_linux64.zip, then decompress and execute with **root** privileges
 
 ```
 sudo wget (link of latest release)
@@ -27,7 +29,7 @@ sudo unzip pingtunnel_linux64.zip
 sudo ./pingtunnel -type server
 ```
 
--   (Optional) Disable system default ping
+- (Optional) Disable system default ping
 
 ```
 echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_all
@@ -35,9 +37,11 @@ echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_all
 
 ### Install the client
 
--   Download the corresponding installation package from [releases](https://github.com/esrrhs/pingtunnel/releases), such as pingtunnel_windows64.zip, and decompress it
--   Then run with **administrator** privileges. The commands corresponding to different forwarding functions are as follows.
--   If you see a log of ping pong, the connection is normal
+- Download the corresponding installation package from [releases](https://github.com/esrrhs/pingtunnel/releases), such
+  as pingtunnel_windows64.zip, and decompress it
+- Then run with **administrator** privileges. The commands corresponding to different forwarding functions are as
+  follows.
+- If you see a log of ping pong, the connection is normal
 
 #### Forward sock5
 
@@ -58,19 +62,25 @@ pingtunnel.exe -type client -l: 4455 -s www.yourserver.com -t www.yourserver.com
 ```
 
 ### Use Docker
+
 It can also be started directly with docker, which is more convenient. Same parameters as above
--   server:
+
+- server:
+
 ```
 docker run --name pingtunnel-server -d --privileged --network host --restart=always esrrhs/pingtunnel ./pingtunnel -type server -key 123456
 ```
--   client:
+
+- client:
+
 ```
 docker run --name pingtunnel-client -d --restart=always -p 1080: 1080 esrrhs/pingtunnel ./pingtunnel -type client -l: 1080 -s www.yourserver.com -sock5 1 -key 123456
 ```
 
 ## Test
 
-download the centos image [centos mirror](http://centos.s.uw.edu/centos/8.4.2105/isos/x86_64/CentOS-8.4.2105-x86_64-dvd1.iso)
+download the centos
+image [centos mirror](http://centos.s.uw.edu/centos/8.4.2105/isos/x86_64/CentOS-8.4.2105-x86_64-dvd1.iso)
 
 |              | wget     | ss       | kcp     | pingtunnel |
 | ------------ | -------- | -------- | ------- | ---------- |

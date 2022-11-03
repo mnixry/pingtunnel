@@ -76,10 +76,10 @@ func Sock5HandshakeBy(conn io.ReadWriter, username string, password string) (err
 
 		// Ensure we are compatible
 		if header[0] != userAuthVersion {
-			return fmt.Errorf("Unsupported auth version: %v", header[0])
+			return fmt.Errorf("unsupported auth version: %v", header[0])
 		}
 
-		// Get the user name
+		// Get the username
 		userLen := int(header[1])
 		user := make([]byte, userLen)
 		if _, err := io.ReadAtLeast(conn, user, userLen); err != nil {

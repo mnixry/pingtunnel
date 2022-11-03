@@ -198,7 +198,7 @@ func NearlyEqual(a int, b int) bool {
 	return math.Abs(aa-bb) < 0.1
 }
 
-// Setup a bare-bones TLS config for the server
+// GenerateTLSConfig Set up a bare-bones TLS config for the server
 func GenerateTLSConfig(name string) (*tls.Config, error) {
 	key, err := rsa.GenerateKey(rand.Reader, 1024)
 	if err != nil {

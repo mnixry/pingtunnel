@@ -205,7 +205,7 @@ func getFunc() (string, string, int) {
 	n := runtime.Callers(0, pc)
 	if n == 0 {
 		// No pcs available. Stop now.
-		// This can happen if the first argument to runtime.Callers is large.
+		// This can happen if the first argument to runtime.Callers are large.
 		return "NIL", "NIL", 0
 	}
 
