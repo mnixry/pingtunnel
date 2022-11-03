@@ -1,16 +1,16 @@
-# Pingtunnel
+# PingTunnel
 
-[<img src="https://img.shields.io/github/license/esrrhs/pingtunnel">](https://github.com/esrrhs/pingtunnel)
-[<img src="https://img.shields.io/github/languages/top/esrrhs/pingtunnel">](https://github.com/esrrhs/pingtunnel)
-[![Go Report Card](https://goreportcard.com/badge/github.com/esrrhs/pingtunnel)](https://goreportcard.com/report/github.com/esrrhs/pingtunnel)
-[<img src="https://img.shields.io/github/v/release/esrrhs/pingtunnel">](https://github.com/esrrhs/pingtunnel/releases)
-[<img src="https://img.shields.io/github/downloads/esrrhs/pingtunnel/total">](https://github.com/esrrhs/pingtunnel/releases)
-[<img src="https://img.shields.io/docker/pulls/esrrhs/pingtunnel">](https://hub.docker.com/repository/docker/esrrhs/pingtunnel)
-[<img src="https://img.shields.io/github/workflow/status/esrrhs/pingtunnel/Go">](https://github.com/esrrhs/pingtunnel/actions)
+[<img src="https://img.shields.io/github/license/mnixry/pingtunnel">](https://github.com/mnixry/pingtunnel)
+[<img src="https://img.shields.io/github/languages/top/mnixry/pingtunnel">](https://github.com/mnixry/pingtunnel)
+[![Go Report Card](https://goreportcard.com/badge/github.com/mnixry/pingtunnel)](https://goreportcard.com/report/github.com/mnixry/pingtunnel)
+[<img src="https://img.shields.io/github/v/release/mnixry/pingtunnel">](https://github.com/mnixry/pingtunnel/releases)
+[<img src="https://img.shields.io/github/downloads/mnixry/pingtunnel/total">](https://github.com/mnixry/pingtunnel/releases)
+[<img src="https://img.shields.io/docker/pulls/mnixry/pingtunnel">](https://hub.docker.com/repository/docker/mnixry/pingtunnel)
+[<img src="https://img.shields.io/github/workflow/status/mnixry/pingtunnel/Go">](https://github.com/mnixry/pingtunnel/actions)
 
-Pingtunnel is a tool that send TCP/UDP traffic over ICMP.
+PingTunnel is a tool that send TCP/UDP traffic over ICMP.
 
-## Note: This tool is only to be used for study and research, do not use it for illegal purposes
+**Note: This tool is only to be used for study and research, do not use it for illegal purposes**
 
 ![image](network.jpg)
 
@@ -20,7 +20,7 @@ Pingtunnel is a tool that send TCP/UDP traffic over ICMP.
 
 - First prepare a server with a public IP, such as EC2 on AWS, assuming the domain name or public IP
   is www.yourserver.com
-- Download the corresponding installation package from [releases](https://github.com/esrrhs/pingtunnel/releases), such
+- Download the corresponding installation package from [releases](https://github.com/mnixry/pingtunnel/releases), such
   as pingtunnel_linux64.zip, then decompress and execute with **root** privileges
 
 ```
@@ -37,7 +37,7 @@ echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_all
 
 ### Install the client
 
-- Download the corresponding installation package from [releases](https://github.com/esrrhs/pingtunnel/releases), such
+- Download the corresponding installation package from [releases](https://github.com/mnixry/pingtunnel/releases), such
   as pingtunnel_windows64.zip, and decompress it
 - Then run with **administrator** privileges. The commands corresponding to different forwarding functions are as
   follows.
@@ -68,13 +68,13 @@ It can also be started directly with docker, which is more convenient. Same para
 - server:
 
 ```
-docker run --name pingtunnel-server -d --privileged --network host --restart=always esrrhs/pingtunnel ./pingtunnel -type server -key 123456
+docker run --name pingtunnel-server -d --privileged --network host --restart=always mnixry/pingtunnel ./pingtunnel -type server -key 123456
 ```
 
 - client:
 
 ```
-docker run --name pingtunnel-client -d --restart=always -p 1080: 1080 esrrhs/pingtunnel ./pingtunnel -type client -l: 1080 -s www.yourserver.com -sock5 1 -key 123456
+docker run --name pingtunnel-client -d --restart=always -p 1080: 1080 mnixry/pingtunnel ./pingtunnel -type client -l: 1080 -s www.yourserver.com -sock5 1 -key 123456
 ```
 
 ## Test
